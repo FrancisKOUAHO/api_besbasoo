@@ -17,7 +17,7 @@ const userPayementSchema = new Schema(
             type: Number,
         },
         user: [
-            { type: mongoose.Schema.Types.ObjectId, ref: 'user' }
+            { type: Schema.Types.ObjectId, ref: 'user'}
         ]
     },
     {

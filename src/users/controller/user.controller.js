@@ -30,7 +30,6 @@ exports.Signup = async (req, res) => {
   try {
     const result = userSchema.validate(req.body);
     if (result.error) {
-      console.log(result.error.message);
       return res.json({
         error: true,
         status: 400,
@@ -95,7 +94,6 @@ exports.Signup = async (req, res) => {
       referralCode: result.value.referralCode,
     });
   } catch (error) {
-    console.error("signup-error", error);
     return res.status(500).json({
       error: true,
       message: "Cannot Register",
@@ -222,7 +220,6 @@ exports.Login = async (req, res) => {
       accessToken: token,
     });
   } catch (err) {
-    console.error("Login error", err);
     return res.status(500).json({
       error: true,
       message: "Couldn't login. Please try again later.",
@@ -273,7 +270,6 @@ exports.ForgotPassword = async (req, res) => {
         "If that email address is in our database, we will send you an email to reset your password",
     });
   } catch (error) {
-    console.error("forgot-password-error", error);
     return res.status(500).json({
       error: true,
       message: error.message,
@@ -319,7 +315,6 @@ exports.ResetPassword = async (req, res) => {
       message: "Password has been changed",
     });
   } catch (error) {
-    console.error("reset-password-error", error);
     return res.status(500).json({
       error: true,
       message: error.message,
@@ -341,7 +336,6 @@ exports.ReferredAccounts = async (req, res) => {
       total: referredAccounts.length,
     });
   } catch (error) {
-    console.error("fetch-referred-error.", error);
     return res.stat(500).json({
       error: true,
       message: error.message,
@@ -361,7 +355,6 @@ exports.Logout = async (req, res) => {
 
     return res.send({ success: true, message: "User Logged out" });
   } catch (error) {
-    console.error("user-logout-error", error);
     return res.stat(500).json({
       error: true,
       message: error.message,

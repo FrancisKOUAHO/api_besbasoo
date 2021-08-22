@@ -62,10 +62,10 @@ const userSchema = new Schema(
             default: null
         },
         user_address: [
-            { type: mongoose.Schema.Types.ObjectId, ref: 'user_address' }
+            {type: Schema.Types.ObjectId, ref: 'user_address'}
         ],
         user_payement: [
-            { type: mongoose.Schema.Types.ObjectId, ref: 'user_payement' }
+            {type: Schema.Types.ObjectId, ref: 'user_payement'}
         ]
     },
     {

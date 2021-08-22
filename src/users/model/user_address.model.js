@@ -29,7 +29,7 @@ const userAddressSchema = new Schema(
             default: null
         },
         user_address: [
-            { type: mongoose.Schema.Types.ObjectId, ref: 'user' }
+            { type: Schema.Types.ObjectId, ref: 'user'}
         ]
     },
     {
