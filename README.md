@@ -1,24 +1,3 @@
-[![Product Name Screen Shot](https://miro.medium.com/max/1920/1*bbN8C4TjOpsuZhMiI_aGow.jpeg)](https://pranesh-a-s.medium.com/how-to-build-simple-and-secure-rest-api-for-user-authentication-using-node-js-jwt-and-mongodb-2bdeb3e5427e)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-[![language](https://img.shields.io/github/languages/top/PraneshASP/node-authentication-jwt-mongodb)]("https://github.com/praneshasp/node-authentication-jwt-mongodb")
-[![vulnerability](https://img.shields.io/snyk/vulnerabilities/github/PraneshASP/node-authentication-jwt-mongodb)](https://github.com/PraneshASP/node-authentication-jwt-mongodb)
-[![repo size](https://img.shields.io/github/repo-size/PraneshASP/node-authentication-jwt-mongodb)](https://github.com/PraneshASP/node-authentication-jwt-mongodb)
-[![node version](https://img.shields.io/node/v/npm)](https://github.com/PraneshASP/node-authentication-jwt-mongodb)
-[![npm version](https://img.shields.io/npm/v/npm)](https://github.com/PraneshASP/node-authentication-jwt-mongodb)
-
-<!-- PROJECT LOGO -->
-<p align="center">
-  <h3 align="center">Simple and secure REST API for User Authentication!</h3>
-  <p align="center">
-     <a href="https://pranesh-a-s.medium.com/how-to-build-simple-and-secure-rest-api-for-user-authentication-using-node-js-jwt-and-mongodb-2bdeb3e5427e"><strong>Explore the post »</strong></a>
-     <br /> <br />
-    <a href="https://github.com/PraneshASP/node-authentication-jwt-mongodb/issues">Report Bug </a>
-    ·
-    <a href="https://github.com/PraneshASP/node-authentication-jwt-mongodb/issues"> Request Feature</a>
-  </p>
-</p>
-
 <!-- ABOUT THE PROJECT -->
 
 ### What's inside this repo?
@@ -28,12 +7,6 @@
 3. Forgot password and reset password.
 4. Session management using JWT (JSON Web Tokens).
 5. Bonus: Simple Referral System!
-
-For a more detailed explanation of the code, you can refer to my medium post associated with this project. It is split into two parts.
-
-- [Part I](https://pranesh-a-s.medium.com/how-to-build-simple-and-secure-rest-api-for-user-authentication-using-node-js-jwt-and-mongodb-2bdeb3e5427e) - Build User signup with email verification, forgot password and reset password.
-
-- [Part II](https://pranesh-a-s.medium.com/jwt-integration-with-an-example-referral-system-using-nodejs-mongodb-and-expressjs-17be91b35f1c) - Integrate JWT and Build a Simple Referral System.
 
 ### Built With
 
