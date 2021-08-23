@@ -1,12 +1,11 @@
-const Joi = require("joi");
 require("dotenv").config();
 
 
-const Product = require('../model/product.model');
+const Product_category = require('../model/product_category.model');
 
 
-exports.createProduct = async (req, res) => {
-    await Product.create(req.body, (error, product) => {
+exports.createProductCategory = async (req, res) => {
+    await Product_category.create(req.body, (error, product) => {
         if (error) {
             return res.status(500).json(
                 {
@@ -27,8 +26,8 @@ exports.createProduct = async (req, res) => {
 }
 
 
-exports.getAllProduct = async (req, res) => {
-    await Product.find((error, product) => {
+exports.getAllProductCategory = async (req, res) => {
+    await Product_category.find((error, product) => {
         if (error) {
             return res.status(500).json(
                 {
@@ -49,8 +48,8 @@ exports.getAllProduct = async (req, res) => {
 }
 
 
-exports.getProduct = async (req, res) => {
-    await Product.findById(req.params.id, (error, product) => {
+exports.getProductCategory = async (req, res) => {
+    await Product_category.findById(req.params.id, (error, product) => {
         if (error) {
             return res.status(500).json(
                 {
@@ -70,8 +69,8 @@ exports.getProduct = async (req, res) => {
     })
 }
 
-exports.editProduct = async (req, res) => {
-    await Product.findByIdAndUpdate(req.params.id, {
+exports.editProductCategory = async (req, res) => {
+    await Product_category.findByIdAndUpdate(req.params.id, {
         $set: req.body
     }, (error, product) => {
         if (error) {
@@ -94,8 +93,8 @@ exports.editProduct = async (req, res) => {
 }
 
 
-exports.deleteProduct = async (req, res) => {
-    await Product.findByIdAndRemove(req.params.id, (error, product) => {
+exports.deleteProductCategory = async (req, res) => {
+    await Product_category.findByIdAndRemove(req.params.id, (error, product) => {
         if (error) {
             return res.status(500).json(
                 {

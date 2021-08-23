@@ -13,7 +13,12 @@ const productCategorySchema = new Schema(
             default: null
         },
         products: [
-            {type: Schema.Types.ObjectId, ref: 'product'}
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'product',
+                required: false,
+                index: true,
+            }
         ]
     },
     {

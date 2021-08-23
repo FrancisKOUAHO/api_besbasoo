@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const productInventorySchema = new Schema(
     {
         quantity: {
-            type: String,
+            type: Number,
             default: null,
             unique: true
         },
