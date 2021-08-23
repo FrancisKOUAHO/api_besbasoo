@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
-const cleanBody = require("../middlewares/cleanbody");
-const { validateToken } = require("../middlewares/validateToken");
+const cleanBody = require("../../../middlewares/cleanbody");
+const { validateToken } = require("../../../middlewares/validateToken");
 
-const AuthController = require("../src/users/controller/user.controller");
+const AuthController = require("../controller/user.controller");
 
 router.post("/signup", cleanBody, AuthController.Signup);
 router.post("/signin", cleanBody, AuthController.Login);

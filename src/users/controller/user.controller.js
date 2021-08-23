@@ -5,7 +5,10 @@ const { customAlphabet: generate } = require("nanoid");
 
 const { generateJwt } = require("../helpers/generateJwt");
 const { sendEmail } = require("../helpers/mailer");
+
 const User = require("../model/user.model");
+const User_address = require("../model/user_address.model");
+const User_payement = require("../model/user_payement.model");
 
 const CHARACTER_SET =
   "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
