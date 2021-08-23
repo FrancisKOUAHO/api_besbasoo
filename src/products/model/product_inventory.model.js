@@ -5,6 +5,7 @@ const productInventorySchema = new Schema(
     {
         quantity: {
             type: String,
+            default: null,
             unique: true
         },
         products: [

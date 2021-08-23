@@ -5,10 +5,12 @@ const productCategorySchema = new Schema(
     {
         name: {
             type: String,
-            unique: true
+            unique: true,
+            default: null
         },
         description: {
             type: String,
+            default: null
         },
         products: [
             {type: Schema.Types.ObjectId, ref: 'product'}
