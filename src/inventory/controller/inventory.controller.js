@@ -14,11 +14,11 @@ exports.createInventory = async (req, res) => {
 
         const productInventory = {quantity};
 
-        const productInventoryCreated = await Inventory.create(productInventory);
+        const inventory = await Inventory.create(productInventory);
 
         return res.status(201).json(
             {
-                data: productInventoryCreated,
+                data: inventory,
                 success: true,
                 message: "The product category has been successfully created",
             }
@@ -35,7 +35,7 @@ exports.createInventory = async (req, res) => {
 
 
 exports.getAllInventory = async (req, res) => {
-    await Inventory.find((error, productInventoryCreated) => {
+    await Inventory.find((error, inventory) => {
         if (error) {
             return res.status(500).json(
                 {
@@ -46,7 +46,7 @@ exports.getAllInventory = async (req, res) => {
         } else {
             return res.status(201).json(
                 {
-                    data: productInventoryCreated,
+                    data: inventory,
                     success: true,
                     message: "All products were successfully recovered!",
                 }
@@ -57,7 +57,7 @@ exports.getAllInventory = async (req, res) => {
 
 
 exports.getInventory = async (req, res) => {
-    await Inventory.findById(req.params.id, (error, productInventoryCreated) => {
+    await Inventory.findById(req.params.id, (error, inventory) => {
         if (error) {
             return res.status(500).json(
                 {
@@ -68,7 +68,7 @@ exports.getInventory = async (req, res) => {
         } else {
             return res.status(201).json(
                 {
-                    data: productInventoryCreated,
+                    data: inventory,
                     success: true,
                     message: "The product has been successfully recovered!",
                 }
@@ -80,7 +80,7 @@ exports.getInventory = async (req, res) => {
 exports.editInventory = async (req, res) => {
     await Inventory.findByIdAndUpdate(req.params.id, {
         $set: req.body
-    }, (error, productInventoryCreated) => {
+    }, (error, inventory) => {
         if (error) {
             return res.status(500).json(
                 {
@@ -91,7 +91,7 @@ exports.editInventory = async (req, res) => {
         } else {
             return res.status(201).json(
                 {
-                    data: productInventoryCreated,
+                    data: inventory,
                     success: true,
                     message: "the product has been successfully updated!",
                 }
@@ -102,7 +102,7 @@ exports.editInventory = async (req, res) => {
 
 
 exports.deleteInventory = async (req, res) => {
-    await Inventory.findByIdAndRemove(req.params.id, (error, productInventoryCreated) => {
+    await Inventory.findByIdAndRemove(req.params.id, (error, inventory) => {
         if (error) {
             return res.status(500).json(
                 {
@@ -113,7 +113,7 @@ exports.deleteInventory = async (req, res) => {
         } else {
             return res.status(201).json(
                 {
-                    data: productInventoryCreated,
+                    data: inventory,
                     success: true,
                     message: "The product has been successfully removed!",
                 }

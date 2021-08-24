@@ -12,6 +12,4 @@ router.patch("/edit-inventory/:id", cleanBody, InventoryController.editInventory
 router.delete("/delete-inventory/:id", cleanBody, InventoryController.deleteInventory);
 
 
-
-
 module.exports = router;
