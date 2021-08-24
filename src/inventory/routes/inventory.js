@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const cleanBody = require('../../../middlewares/cleanbody');
-const InventoryController = require("../../inventory/controller/product_inventory.controller");
+const InventoryController = require("../controller/inventory.controller");
 
 
 router.post("/create-inventory", cleanBody, InventoryController.createInventory);

@@ -1,41 +1,44 @@
 require("dotenv").config();
 
 
-const Inventory = require('../model/inventory.model');
+const Payement = require('../model/payement.model');
 
 
-exports.createInventory = async (req, res) => {
+exports.createPayement = async (req, res) => {
     try {
-        const {quantity} = req.body;
+        const { title, description } = req.body;
 
-        if (!quantity) {
-            return res.status(422).json({message: "Les champs title, description sont obligatoires."});
+        if (!title || !description ) {
+            return res.status(422).json({ message: "Les champs title, description sont obligatoires." });
         }
 
-        const productInventory = {quantity};
+        const payement = {
+            title,
+            description,
+        };
 
-        const productInventoryCreated = await Inventory.create(productInventory);
+        const PayementCreated = await Payement.create(payement);
 
         return res.status(201).json(
             {
-                data: productInventoryCreated,
+                data: PayementCreated,
                 success: true,
-                message: "The product category has been successfully created",
+                message: "The product Payement has been successfully created",
             }
         );
     } catch (error) {
         return res.status(500).json(
             {
                 success: false,
-                message: "The product category has only been created",
+                message: "The product Payement has only been created",
             }
         );
     }
 }
 
 
-exports.getAllInventory = async (req, res) => {
-    await Inventory.find((error, productInventoryCreated) => {
+exports.getAllPayement = async (req, res) => {
+    await Payement.find((error, product) => {
         if (error) {
             return res.status(500).json(
                 {
@@ -46,7 +49,7 @@ exports.getAllInventory = async (req, res) => {
         } else {
             return res.status(201).json(
                 {
-                    data: productInventoryCreated,
+                    data: product,
                     success: true,
                     message: "All products were successfully recovered!",
                 }
@@ -56,8 +59,8 @@ exports.getAllInventory = async (req, res) => {
 }
 
 
-exports.getInventory = async (req, res) => {
-    await Inventory.findById(req.params.id, (error, productInventoryCreated) => {
+exports.getPayement = async (req, res) => {
+    await Payement.findById(req.params.id, (error, product) => {
         if (error) {
             return res.status(500).json(
                 {
@@ -68,7 +71,7 @@ exports.getInventory = async (req, res) => {
         } else {
             return res.status(201).json(
                 {
-                    data: productInventoryCreated,
+                    data: product,
                     success: true,
                     message: "The product has been successfully recovered!",
                 }
@@ -77,10 +80,10 @@ exports.getInventory = async (req, res) => {
     })
 }
 
-exports.editInventory = async (req, res) => {
-    await Inventory.findByIdAndUpdate(req.params.id, {
+exports.editPayement = async (req, res) => {
+    await Payement.findByIdAndUpdate(req.params.id, {
         $set: req.body
-    }, (error, productInventoryCreated) => {
+    }, (error, product) => {
         if (error) {
             return res.status(500).json(
                 {
@@ -91,7 +94,7 @@ exports.editInventory = async (req, res) => {
         } else {
             return res.status(201).json(
                 {
-                    data: productInventoryCreated,
+                    data: product,
                     success: true,
                     message: "the product has been successfully updated!",
                 }
@@ -101,8 +104,8 @@ exports.editInventory = async (req, res) => {
 }
 
 
-exports.deleteInventory = async (req, res) => {
-    await Inventory.findByIdAndRemove(req.params.id, (error, productInventoryCreated) => {
+exports.deletePayement = async (req, res) => {
+    await Payement.findByIdAndRemove(req.params.id, (error, product) => {
         if (error) {
             return res.status(500).json(
                 {
@@ -113,7 +116,7 @@ exports.deleteInventory = async (req, res) => {
         } else {
             return res.status(201).json(
                 {
-                    data: productInventoryCreated,
+                    data: product,
                     success: true,
                     message: "The product has been successfully removed!",
                 }

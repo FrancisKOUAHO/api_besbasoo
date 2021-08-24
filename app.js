@@ -5,12 +5,16 @@ require("dotenv").config();
 const PORT = process.env.PORT | 5000;
 
 const authRoutes = require("./src/users/routes/users");
+const addressRoutes = require("./src/address/routes/address");
+const payementRoutes = require("./src/payement/routes/payement");
 const productRoutes = require("./src/products/routes/products");
+const categoryRoutes = require("./src/category/routes/category");
+const inventoryRoutes = require("./src/inventory/routes/inventory");
+
 
 mongoose
     .connect(process.env.MONGO_URI, {
         dbName: "themarketbesbasoo",
-        useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,
         useNewUrlParser: true
@@ -35,7 +39,11 @@ app.get("/ping", (req, res) => {
 });
 
 app.use("/users", authRoutes);
+app.use("/users/address", addressRoutes);
+app.use("/users/payement", payementRoutes);
 app.use("/products", productRoutes);
+app.use("/products/category", categoryRoutes);
+app.use("/products/inventory", inventoryRoutes);
 
 app.listen(PORT, () => {
     console.log("Server started listening on PORT : " + PORT);
