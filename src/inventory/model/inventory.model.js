@@ -1,16 +1,13 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const productInventorySchema = new Schema(
+const inventorySchema = new Schema(
     {
         quantity: {
             type: Number,
             default: null,
             unique: true
-        },
-        products: [
-            {type: Schema.Types.ObjectId, ref: 'product'}
-        ]
+        }
     },
     {
         timestamps: {
@@ -22,5 +19,5 @@ const productInventorySchema = new Schema(
 );
 
 
-const Product_inventory = mongoose.model("product_inventory", productInventorySchema);
-module.exports = Product_inventory
+const Inventory = mongoose.model("Product_inventory", inventorySchema);
+module.exports = Inventory

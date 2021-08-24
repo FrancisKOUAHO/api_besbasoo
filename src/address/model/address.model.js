@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const userAddressSchema = new Schema(
+const addressSchema = new Schema(
     {
         adress_line1: {
             type: String,
@@ -28,9 +28,6 @@ const userAddressSchema = new Schema(
             type: Number,
             default: null
         },
-        user_address: [
-            { type: Schema.Types.ObjectId, ref: 'user'}
-        ]
     },
     {
         timestamps: {
@@ -41,5 +38,5 @@ const userAddressSchema = new Schema(
 );
 
 
-const User_address = mongoose.model("user_address", userAddressSchema);
-module.exports = User_address
+const Address = mongoose.model("Address", addressSchema);
+module.exports = Address

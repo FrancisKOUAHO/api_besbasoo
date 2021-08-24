@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const userPayementSchema = new Schema(
+const payementSchema = new Schema(
     {
         payement_type: {
             type: String,
@@ -16,9 +16,6 @@ const userPayementSchema = new Schema(
         expiry: {
             type: Number,
         },
-        user: [
-            { type: Schema.Types.ObjectId, ref: 'user'}
-        ]
     },
     {
         timestamps: {
@@ -29,5 +26,5 @@ const userPayementSchema = new Schema(
 );
 
 
-const User_payement = mongoose.model("user_payement", userPayementSchema);
-module.exports = User_payement
+const Payement = mongoose.model("Payement", payementSchema);
+module.exports = Payement

@@ -9,7 +9,7 @@ const productSchema = new Schema(
         description: {
             type: String,
         },
-        SKU: {
+        sku: {
             type: String,
         },
         image: {
@@ -18,11 +18,11 @@ const productSchema = new Schema(
         price: {
             type: Number,
         },
-        category: [
-            {type: Schema.Types.ObjectId, ref: 'product_category'}
+        product_category: [
+            {type: Schema.Types.ObjectId, ref: 'Product_category'}
         ],
-        inventory: [
-            {type: Schema.Types.ObjectId, ref: 'product_inventory'}
+        product_inventory: [
+            {type: Schema.Types.ObjectId, ref: 'Product_inventory'}
         ]
     },
     {
@@ -35,5 +35,5 @@ const productSchema = new Schema(
 );
 
 
-const Product = mongoose.model("product", productSchema);
+const Product = mongoose.model("Product", productSchema);
 module.exports = Product

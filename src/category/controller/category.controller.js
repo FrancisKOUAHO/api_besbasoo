@@ -1,33 +1,44 @@
 require("dotenv").config();
 
 
-const Product_category = require('../model/product_category.model');
+const category = require('../model/category.model');
 
 
-exports.createProductCategory = async (req, res) => {
-    await Product_category.create(req.body, (error, product) => {
-        if (error) {
-            return res.status(500).json(
-                {
-                    success: false,
-                    message: "The product was not created",
-                }
-            );
-        } else {
-            return res.status(201).json(
-                {
-                    data: product,
-                    success: true,
-                    message: "The product has been successfully created",
-                }
-            );
+exports.createCategory = async (req, res) => {
+    try {
+        const { title, description } = req.body;
+
+        if (!title || !description ) {
+            return res.status(422).json({ message: "Les champs title, description sont obligatoires." });
         }
-    })
+
+        const productCategory = {
+            title,
+            description,
+        };
+
+        const categoryCreated = (await category.create(productCategory)).populate("Product");
+
+        return res.status(201).json(
+            {
+                data: categoryCreated,
+                success: true,
+                message: "The product category has been successfully created",
+            }
+        );
+    } catch (error) {
+        return res.status(500).json(
+            {
+                success: false,
+                message: "The product category has only been created",
+            }
+        );
+    }
 }
 
 
-exports.getAllProductCategory = async (req, res) => {
-    await Product_category.find((error, product) => {
+exports.getAllCategory = async (req, res) => {
+    await category.find((error, product) => {
         if (error) {
             return res.status(500).json(
                 {
@@ -48,8 +59,8 @@ exports.getAllProductCategory = async (req, res) => {
 }
 
 
-exports.getProductCategory = async (req, res) => {
-    await Product_category.findById(req.params.id, (error, product) => {
+exports.getCategory = async (req, res) => {
+    await category.findById(req.params.id, (error, product) => {
         if (error) {
             return res.status(500).json(
                 {
@@ -69,8 +80,8 @@ exports.getProductCategory = async (req, res) => {
     })
 }
 
-exports.editProductCategory = async (req, res) => {
-    await Product_category.findByIdAndUpdate(req.params.id, {
+exports.editCategory = async (req, res) => {
+    await category.findByIdAndUpdate(req.params.id, {
         $set: req.body
     }, (error, product) => {
         if (error) {
@@ -93,8 +104,8 @@ exports.editProductCategory = async (req, res) => {
 }
 
 
-exports.deleteProductCategory = async (req, res) => {
-    await Product_category.findByIdAndRemove(req.params.id, (error, product) => {
+exports.deleteCategory = async (req, res) => {
+    await category.findByIdAndRemove(req.params.id, (error, product) => {
         if (error) {
             return res.status(500).json(
                 {
