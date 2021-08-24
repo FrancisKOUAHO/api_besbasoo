@@ -1,5 +1,12 @@
 const mongoose = require("mongoose");
+const Joi = require("joi");
 const Schema = mongoose.Schema;
+
+
+const CategoryDocument = Joi.object().keys({
+    title: Joi.string(),
+    description: Joi.string(),
+});
 
 const categorySchema = new Schema(
     {
@@ -24,4 +31,4 @@ const categorySchema = new Schema(
 
 
 const Category = mongoose.model("Category", categorySchema);
-module.exports = Category
+module.exports = {Category, CategoryDocument}

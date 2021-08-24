@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 
-const Product = require('../model/product.model');
+const {Product, ProductDocument} = require('../model/product.model');
 
 
 exports.createProduct = async (req, res) => {
@@ -12,15 +12,7 @@ exports.createProduct = async (req, res) => {
             return res.status(422).json({message: "Les champs title, description, sku, image, price sont obligatoires."});
         }
 
-        const product = {
-            title,
-            description,
-            sku,
-            image,
-            price,
-        };
-
-        const productCreated = await Product.create(product);
+        const productCreated = await Product.create(ProductDocument);
 
         return res.status(201).json(
             {

@@ -1,35 +1,30 @@
 require("dotenv").config();
 
-const Address = require('../model/address.model');
+const {Address, AddressDocument} = require('../model/address.model');
 
 
 exports.createAddress = async (req, res) => {
     try {
-        const {title, description} = req.body;
+        const {address_line, city, postal_code, country, telephone, mobile} = req.body;
 
-        if (!title || !description) {
-            return res.status(422).json({message: "Les champs title, description sont obligatoires."});
+        if (!address_line || !city || !postal_code || !country || !telephone || !mobile) {
+            return res.status(422).json({message: "Les champs address_line, city, postal_code, country, telephone, mobile sont obligatoires."});
         }
 
-        const Address = {
-            title,
-            description,
-        };
-
-        const AddressCreated = await Address.create(Address);
+        const AddressCreated = await Address.create(AddressDocument);
 
         return res.status(201).json(
             {
                 data: AddressCreated,
                 success: true,
-                message: "The address Address has been successfully created",
+                message: "The address has been successfully created",
             }
         );
     } catch (error) {
         return res.status(500).json(
             {
                 success: false,
-                message: "The address Address has only been created",
+                message: "The address has only been created",
             }
         );
     }

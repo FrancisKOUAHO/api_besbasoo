@@ -1,6 +1,22 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
+const Joi = require("joi");
 const Schema = mongoose.Schema;
+
+
+//Validate user schema
+const UserDocument = Joi.object().keys({
+    email: Joi.string().email({ minDomainSegments: 2 }),
+    password: Joi.string().required().min(4),
+    user_address: Joi.array(),
+    user_payement: Joi.array(),
+    role: Joi.string(),
+    referrer: Joi.string(),
+    first_name: Joi.string(),
+    last_name: Joi.string(),
+    address: Joi.array(),
+    payement: Joi.array()
+});
 
 const userSchema = new Schema(
     {
@@ -85,7 +101,7 @@ const userSchema = new Schema(
 );
 
 const User = mongoose.model("User", userSchema);
-module.exports = User;
+module.exports = {User, UserDocument};
 
 module.exports.hashPassword = async (password) => {
     try {

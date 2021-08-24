@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 
-const Inventory = require('../model/inventory.model');
+const {Inventory, InventoryDocument} = require('../model/inventory.model');
 
 
 exports.createInventory = async (req, res) => {
@@ -9,25 +9,23 @@ exports.createInventory = async (req, res) => {
         const {quantity} = req.body;
 
         if (!quantity) {
-            return res.status(422).json({message: "Les champs title, description sont obligatoires."});
+            return res.status(422).json({message: "Le champ quantity est obligatoires."});
         }
 
-        const productInventory = {quantity};
-
-        const inventory = await Inventory.create(productInventory);
+        const inventory = await Inventory.create(InventoryDocument);
 
         return res.status(201).json(
             {
                 data: inventory,
                 success: true,
-                message: "The product category has been successfully created",
+                message: "The inventory has been successfully created",
             }
         );
     } catch (error) {
         return res.status(500).json(
             {
                 success: false,
-                message: "The product category has only been created",
+                message: "The inventory has only been created",
             }
         );
     }
@@ -48,7 +46,7 @@ exports.getAllInventory = async (req, res) => {
                 {
                     data: inventory,
                     success: true,
-                    message: "All products were successfully recovered!",
+                    message: "All inventories were successfully recovered!",
                 }
             );
         }
@@ -62,7 +60,7 @@ exports.getInventory = async (req, res) => {
             return res.status(500).json(
                 {
                     success: false,
-                    message: "The product was not recovered!",
+                    message: "The inventory was not recovered!",
                 }
             );
         } else {
@@ -70,7 +68,7 @@ exports.getInventory = async (req, res) => {
                 {
                     data: inventory,
                     success: true,
-                    message: "The product has been successfully recovered!",
+                    message: "The inventory has been successfully recovered!",
                 }
             );
         }
@@ -85,7 +83,7 @@ exports.editInventory = async (req, res) => {
             return res.status(500).json(
                 {
                     success: false,
-                    message: "the product has not been updated!",
+                    message: "the inventory has not been updated!",
                 }
             );
         } else {
@@ -93,7 +91,7 @@ exports.editInventory = async (req, res) => {
                 {
                     data: inventory,
                     success: true,
-                    message: "the product has been successfully updated!",
+                    message: "the inventory has been successfully updated!",
                 }
             );
         }
@@ -107,7 +105,7 @@ exports.deleteInventory = async (req, res) => {
             return res.status(500).json(
                 {
                     success: false,
-                    message: "The product has not been removed!",
+                    message: "The inventory has not been removed!",
                 }
             );
         } else {
@@ -115,7 +113,7 @@ exports.deleteInventory = async (req, res) => {
                 {
                     data: inventory,
                     success: true,
-                    message: "The product has been successfully removed!",
+                    message: "The inventory has been successfully removed!",
                 }
             );
         }

@@ -1,5 +1,16 @@
 const mongoose = require("mongoose");
+const Joi = require("joi");
 const Schema = mongoose.Schema;
+
+
+const AddressDocument = Joi.object().keys({
+    address_line: Joi.string(),
+    city: Joi.string(),
+    postal_code: Joi.number(),
+    country: Joi.string(),
+    telephone: Joi.number(),
+    mobile: Joi.number(),
+});
 
 const addressSchema = new Schema(
     {
@@ -39,4 +50,4 @@ const addressSchema = new Schema(
 
 
 const Address = mongoose.model("Address", addressSchema);
-module.exports = Address
+module.exports = {Address, AddressDocument}
