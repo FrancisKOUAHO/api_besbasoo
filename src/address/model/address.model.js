@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const addressSchema = new Schema(
     {
-        adress_line1: {
+        address_line: {
             type: String,
             required: true,
             unique: true

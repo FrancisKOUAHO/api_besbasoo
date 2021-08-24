@@ -63,11 +63,17 @@ const userSchema = new Schema(
             type: String,
             default: null
         },
-        user_address: [
-            {type: Schema.Types.ObjectId, ref: 'user_address'}
+        address: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Address'
+            }
         ],
-        user_payement: [
-            {type: Schema.Types.ObjectId, ref: 'user_payement'}
+        payement: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Payement'
+            }
         ]
     },
     {
