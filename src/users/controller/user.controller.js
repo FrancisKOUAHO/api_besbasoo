@@ -5,7 +5,8 @@ const { customAlphabet: generate } = require("nanoid");
 const { generateJwt } = require("../helpers/generateJwt");
 const { sendEmail } = require("../helpers/mailer");
 
-const {User, UserDocument} = require("../model/user.model");
+const User = require("../model/user.model");
+const Joi = require("joi");
 
 const CHARACTER_SET =
   "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -14,6 +15,19 @@ const REFERRAL_CODE_LENGTH = 8;
 
 const referralCode = generate(CHARACTER_SET, REFERRAL_CODE_LENGTH);
 
+//Validate user schema
+const UserDocument = Joi.object().keys({
+  email: Joi.string().email({ minDomainSegments: 2 }),
+  password: Joi.string().required().min(4),
+  user_address: Joi.array(),
+  user_payement: Joi.array(),
+  role: Joi.string(),
+  referrer: Joi.string(),
+  first_name: Joi.string(),
+  last_name: Joi.string(),
+  address: Joi.array(),
+  payement: Joi.array()
+});
 
 
 exports.Signup = async (req, res) => {

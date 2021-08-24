@@ -1,6 +1,5 @@
 require("dotenv").config();
-
-const {Address, AddressDocument} = require('../model/address.model');
+const Address = require('../model/address.model');
 
 
 exports.createAddress = async (req, res) => {
@@ -10,6 +9,15 @@ exports.createAddress = async (req, res) => {
         if (!address_line || !city || !postal_code || !country || !telephone || !mobile) {
             return res.status(422).json({message: "Les champs address_line, city, postal_code, country, telephone, mobile sont obligatoires."});
         }
+
+        const AddressDocument = {
+            address_line,
+            city,
+            postal_code,
+            country,
+            telephone,
+            mobile,
+        };
 
         const AddressCreated = await Address.create(AddressDocument);
 

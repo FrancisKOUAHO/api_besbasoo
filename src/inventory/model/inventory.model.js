@@ -2,16 +2,15 @@ const mongoose = require("mongoose");
 const Joi = require("joi");
 const Schema = mongoose.Schema;
 
-const InventoryDocument = Joi.object().keys({
-    quantity: Joi.number(),
-});
-
 const inventorySchema = new Schema(
     {
         quantity: {
             type: Number,
-            default: null,
             unique: true
+        },
+        product: {
+            type: Schema.Types.ObjectId,
+            ref: "Product"
         }
     },
     {
@@ -25,4 +24,4 @@ const inventorySchema = new Schema(
 
 
 const Inventory = mongoose.model("Inventory", inventorySchema);
-module.exports = {Inventory, InventoryDocument}
+module.exports = Inventory

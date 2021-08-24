@@ -1,18 +1,28 @@
 require("dotenv").config();
+const Product = require('../model/product.model');
+const Category = require('../../category/model/category.model');
 
-
-const {Product, ProductDocument} = require('../model/product.model');
 
 
 exports.createProduct = async (req, res) => {
     try {
-        const {title, description, sku, image, price} = req.body;
+        const {title, description, sku, image, price, product_category, product_inventory} = req.body;
 
         if (!title || !description || !sku || !image || !price) {
             return res.status(422).json({message: "Les champs title, description, sku, image, price sont obligatoires."});
         }
 
-        const productCreated = await Product.create(ProductDocument);
+        const ProductDocument = {
+            title,
+            description,
+            sku,
+            image,
+            price,
+            product_category,
+            product_inventory,
+        };
+
+        const productCreated = await Product.create(ProductDocument)
 
         return res.status(201).json(
             {
@@ -34,7 +44,7 @@ exports.createProduct = async (req, res) => {
 
 exports.getAllProduct = async (req, res) => {
 
-    await Product.find({}).populate("Product_category, Product_inventory").exec((error, product) => {
+    await Product.find({}).populate("Product_category").exec((error, product) => {
         if (error) {
             return res.status(500).json(
                 {

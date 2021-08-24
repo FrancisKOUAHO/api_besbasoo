@@ -1,18 +1,21 @@
 require("dotenv").config();
-
-
-const {category, CategoryDocument} = require('../model/category.model');
+const Category = require('../model/category.model');
 
 
 exports.createCategory = async (req, res) => {
     try {
-        const { title, description } = req.body;
+        const {title, description} = req.body;
 
-        if (!title || !description ) {
-            return res.status(422).json({ message: "Les champs title, description sont obligatoires." });
+        if (!title || !description) {
+            return res.status(422).json({message: "Les champs title, description sont obligatoires."});
         }
 
-        const categoryCreated = await category.create(CategoryDocument);
+        const CategoryDocument = {
+            title,
+            description,
+        };
+
+        const categoryCreated = await Category.create(CategoryDocument);
 
         return res.status(201).json(
             {

@@ -4,34 +4,15 @@ const Joi = require("joi");
 const Schema = mongoose.Schema;
 
 
-//Validate user schema
-const UserDocument = Joi.object().keys({
-    email: Joi.string().email({ minDomainSegments: 2 }),
-    password: Joi.string().required().min(4),
-    user_address: Joi.array(),
-    user_payement: Joi.array(),
-    role: Joi.string(),
-    referrer: Joi.string(),
-    first_name: Joi.string(),
-    last_name: Joi.string(),
-    address: Joi.array(),
-    payement: Joi.array()
-});
+
 
 const userSchema = new Schema(
     {
-        userId: {
-            type: String,
-            unique: true,
-            required: true
-        },
         first_name: {
             type: String,
-            default: null
         },
         last_name: {
             type: String,
-            default: null
         },
         role: {
             type: String,
@@ -53,23 +34,18 @@ const userSchema = new Schema(
         },
         resetPasswordToken: {
             type: String,
-            default: null
         },
         resetPasswordExpires: {
             type: Date,
-            default: null
         },
         emailToken: {
             type: String,
-            default: null
         },
         emailTokenExpires: {
             type: Date,
-            default: null
         },
         accessToken: {
             type: String,
-            default: null
         },
         referralCode: {
             type: String,
@@ -77,7 +53,6 @@ const userSchema = new Schema(
         },
         referrer: {
             type: String,
-            default: null
         },
         address: [
             {
@@ -101,7 +76,7 @@ const userSchema = new Schema(
 );
 
 const User = mongoose.model("User", userSchema);
-module.exports = {User, UserDocument};
+module.exports = User;
 
 module.exports.hashPassword = async (password) => {
     try {

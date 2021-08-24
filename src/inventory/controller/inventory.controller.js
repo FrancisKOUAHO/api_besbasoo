@@ -1,16 +1,19 @@
 require("dotenv").config();
-
-
-const {Inventory, InventoryDocument} = require('../model/inventory.model');
+const Inventory = require('../model/inventory.model');
 
 
 exports.createInventory = async (req, res) => {
     try {
-        const {quantity} = req.body;
+        const {quantity, product} = req.body;
 
         if (!quantity) {
             return res.status(422).json({message: "Le champ quantity est obligatoires."});
         }
+
+        const InventoryDocument = {
+            quantity,
+            product,
+        };
 
         const inventory = await Inventory.create(InventoryDocument);
 

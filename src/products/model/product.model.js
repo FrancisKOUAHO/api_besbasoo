@@ -1,18 +1,9 @@
 const mongoose = require("mongoose");
-const Joi = require("joi");
 const Schema = mongoose.Schema;
-
-
-const ProductDocument = Joi.object().keys({
-    title: Joi.string(),
-    description: Joi.string(),
-    sku: Joi.string(),
-    image: Joi.string(),
-    price: Joi.number(),
-});
 
 const productSchema = new Schema(
     {
+        _id: Schema.Types.ObjectId,
         title: {
             type: String,
         },
@@ -46,4 +37,4 @@ const productSchema = new Schema(
 
 
 const Product = mongoose.model("Product", productSchema);
-module.exports = {Product, ProductDocument}
+module.exports = Product;

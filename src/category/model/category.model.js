@@ -10,15 +10,18 @@ const CategoryDocument = Joi.object().keys({
 
 const categorySchema = new Schema(
     {
+        _id: Schema.Types.ObjectId,
         title: {
             type: String,
             unique: true,
-            default: null
         },
         description: {
             type: String,
-            default: null
         },
+        product: {
+            type: Schema.Types.ObjectId,
+            ref: "Product"
+        }
     },
     {
         timestamps: {
@@ -31,4 +34,4 @@ const categorySchema = new Schema(
 
 
 const Category = mongoose.model("Category", categorySchema);
-module.exports = {Category, CategoryDocument}
+module.exports = Category

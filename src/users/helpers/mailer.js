@@ -7,7 +7,7 @@ async function sendEmail(email, code) {
 
     const port = 465;
 
-    const senderAddress = "kouahofrancis@gmail.com";
+    const senderAddress = "besbasoo@besbasoo.fr";
 
     const toAddress = email;
 

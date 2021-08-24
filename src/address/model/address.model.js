@@ -2,16 +2,6 @@ const mongoose = require("mongoose");
 const Joi = require("joi");
 const Schema = mongoose.Schema;
 
-
-const AddressDocument = Joi.object().keys({
-    address_line: Joi.string(),
-    city: Joi.string(),
-    postal_code: Joi.number(),
-    country: Joi.string(),
-    telephone: Joi.number(),
-    mobile: Joi.number(),
-});
-
 const addressSchema = new Schema(
     {
         address_line: {
@@ -24,20 +14,16 @@ const addressSchema = new Schema(
             required: true
         },
         postal_code: {
-            type: String,
-            default: null
+            type: Number,
         },
         country: {
             type: String,
-            default: null
         },
         telephone: {
             type: Number,
-            default: null
         },
         mobile: {
             type: Number,
-            default: null
         },
     },
     {
@@ -50,4 +36,4 @@ const addressSchema = new Schema(
 
 
 const Address = mongoose.model("Address", addressSchema);
-module.exports = {Address, AddressDocument}
+module.exports = Address

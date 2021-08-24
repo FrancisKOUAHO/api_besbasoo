@@ -1,7 +1,5 @@
 require("dotenv").config();
-
-
-const {Payement, PayementDocument} = require('../model/payement.model');
+const Payement = require('../model/payement.model');
 
 
 exports.createPayement = async (req, res) => {
@@ -12,7 +10,17 @@ exports.createPayement = async (req, res) => {
             return res.status(422).json({ message: "Les champs title, description sont obligatoires." });
         }
 
+        const PayementDocument = {
+            payement_type,
+            provider,
+            account_no,
+            expiry,
+        };
+
+        console.log(PayementDocument)
+
         const PayementCreated = await Payement.create(PayementDocument);
+
 
         return res.status(201).json(
             {
