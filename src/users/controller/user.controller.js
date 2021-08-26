@@ -30,7 +30,7 @@ const UserDocument = Joi.object().keys({
 });
 
 
-exports.Signup = async (req, res) => {
+exports.SignUp = async (req, res) => {
   try {
     const result = UserDocument.validate(req.body);
     if (result.error) {
@@ -165,7 +165,7 @@ exports.Activate = async (req, res) => {
   }
 };
 
-exports.Login = async (req, res) => {
+exports.SignIn = async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -206,7 +206,6 @@ exports.Login = async (req, res) => {
     }
 
     //Generate Access token
-
     const { error, token } = await generateJwt(user.email, user.userId);
     if (error) {
       return res.status(500).json({

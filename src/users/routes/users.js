@@ -6,8 +6,8 @@ const {validateToken} = require("../../../middlewares/validateToken");
 
 const AuthController = require("../controller/user.controller");
 
-router.post("/signup", cleanBody, AuthController.Signup);
-router.post("/signin", cleanBody, AuthController.Login);
+router.post("/signup", cleanBody, AuthController.SignUp);
+router.post("/signin", cleanBody, AuthController.SignIn);
 
 router.get("/profile", cleanBody, AuthController.SerializeUser);
 
