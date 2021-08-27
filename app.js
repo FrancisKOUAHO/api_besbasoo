@@ -32,7 +32,6 @@ var corsOptions = {
     origin: 'https://apibesbasoo.herokuapp.com/',
     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
     method: 'GET , PUT, POST, DELETE, PATCH',
-
 }
 
 const app = express();
