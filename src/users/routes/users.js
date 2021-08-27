@@ -1,24 +1,25 @@
 const express = require("express");
 const router = express.Router();
+const cors = require("cors");
 
 const cleanBody = require("../../../middlewares/cleanbody");
 const {validateToken} = require("../../../middlewares/validateToken");
 
 const AuthController = require("../controller/user.controller");
 
-router.post("/signup", cleanBody, AuthController.SignUp);
-router.post("/signin", cleanBody, AuthController.SignIn);
+router.post("/signup", cors(corsOptions), cleanBody, AuthController.SignUp);
+router.post("/signin", cors(corsOptions), cleanBody, AuthController.SignIn);
 
-router.get("/profile", cleanBody, AuthController.SerializeUser);
+router.get("/profile", cors(corsOptions), cleanBody, AuthController.SerializeUser);
 
-router.patch("/activate", cleanBody, AuthController.Activate);
+router.patch("/activate", cors(corsOptions),  cleanBody, AuthController.Activate);
 
-router.patch("/forgot", cleanBody, AuthController.ForgotPassword);
+router.patch("/forgot", cors(corsOptions), cleanBody, AuthController.ForgotPassword);
 
-router.patch("/reset", cleanBody, AuthController.ResetPassword);
+router.patch("/reset", cors(corsOptions),  cleanBody, AuthController.ResetPassword);
 
-router.get("/referred", validateToken, AuthController.ReferredAccounts);
+router.get("/referred", cors(corsOptions), validateToken, AuthController.ReferredAccounts);
 
-router.get("/logout", validateToken, AuthController.Logout);
+router.get("/logout", cors(corsOptions),  validateToken, AuthController.Logout);
 
 module.exports = router;
