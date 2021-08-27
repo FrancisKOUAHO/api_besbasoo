@@ -27,15 +27,14 @@ mongoose
         console.error("Mongo Connection Error", err);
     });
 
-
-var corsOptions = {
-    origin: 'https://apibesbasoo.herokuapp.com/',
-    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-    method: 'GET , PUT, POST, DELETE, PATCH',
-}
-
 const app = express();
-app.use(cors(corsOptions))
+app.use(cors({
+    'allowedHeaders': ['sessionId', 'Content-Type'],
+    'exposedHeaders': ['sessionId'],
+    'origin': '*',
+    'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    'preflightContinue': false
+}))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
