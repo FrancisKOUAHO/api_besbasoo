@@ -28,7 +28,7 @@ mongoose
     });
 
 var corsOptions = {
-    origin: 'https://apibesbasoo.herokuapp.com/',
+    origin: '*',
     optionsSuccessStatus: 200,
     methods: 'GET , PUT, POST, DELETE, PATCH',
 }
