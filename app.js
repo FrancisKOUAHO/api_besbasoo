@@ -27,7 +27,11 @@ mongoose
         console.error("Mongo Connection Error", err);
     });
 
-var corsOptions = {origin: 'https://apibesbasoo.herokuapp.com/'}
+const corsOptions = {
+    origin: 'https://apibesbasoo.herokuapp.com/',
+    optionsSuccessStatus: 200,
+    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
+};
 
 const app = express();
 app.use(cors(corsOptions))
