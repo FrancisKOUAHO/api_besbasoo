@@ -15,7 +15,7 @@ async function sendEmail(email, code) {
 
         const smtpPassword = process.env.SG_APIKEY;
 
-        const subject = "Verify your email";
+        const subject = "Vérifiez votre e-mail";
 
         // The body of the email for recipients
         const body_html = `
