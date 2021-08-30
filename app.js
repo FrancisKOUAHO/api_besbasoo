@@ -28,7 +28,7 @@ mongoose
     });
 
 const corsOptions = {
-    origin: 'https://apibesbasoo.herokuapp.com/',
+    origin: 'http://localhost:3000',
     optionsSuccessStatus: 200,
     methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
 };
