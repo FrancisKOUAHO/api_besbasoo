@@ -105,7 +105,7 @@ exports.SignUp = async (req, res) => {
   }
 };
 
- exports.SerializeUser = async (req, res) => {
+ exports.getUser = async (req, res) => {
    const { id } = req.params;
    const user = await User.findOne({ _id: id });
 
