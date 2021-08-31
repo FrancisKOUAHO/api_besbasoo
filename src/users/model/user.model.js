@@ -4,57 +4,32 @@ const Joi = require("joi");
 const Schema = mongoose.Schema;
 
 
-
-
 const userSchema = new Schema(
     {
-        first_name: {
-            type: String,
-            default: null
-        },
-        last_name: {
-            type: String,
-            default: null
-        },
+        userId: {type: String, unique: true, required: true},
+
+        first_name: {type: String, default: null},
+        last_name: {type: String, default: null},
+        email: {type: String, required: true, unique: true},
+        password: {type: String, required: true},
+
+
+        active: {type: Boolean, default: false},
+        resetPasswordToken: {type: String, default: null},
+        resetPasswordExpires: {type: Date, default: null},
+
+        emailToken: {type: String, default: null},
+        emailTokenExpires: {type: Date, default: null},
+
+        accessToken: {type: String, default: null},
+
+        referralCode: {type: String, unique: true},
+        referrer: {type: String, default: null},
+
         role: {
             type: String,
             default: "user",
             enum: ["user", "seller", "administrator"]
-        },
-        email: {
-            type: String,
-            required: true,
-            unique: true
-        },
-        active: {
-            type: Boolean,
-            default: false
-        },
-        password: {
-            type: String,
-            required: true
-        },
-        resetPasswordToken: {
-            type: String,
-        },
-        resetPasswordExpires: {
-            type: Date,
-        },
-        emailToken: {
-            type: String,
-        },
-        emailTokenExpires: {
-            type: Date,
-        },
-        accessToken: {
-            type: String,
-        },
-        referralCode: {
-            type: String,
-            unique: true
-        },
-        referrer: {
-            type: String,
         },
         address: [
             {

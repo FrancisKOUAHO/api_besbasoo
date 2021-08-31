@@ -343,21 +343,27 @@ exports.ReferredAccounts = async (req, res) => {
     }
 };
 
-exports.Logout = async (req, res) => {
-    try {
-        const {id} = req.decoded;
 
-        let user = await User.findOne({userId: id});
 
-        user.accessToken = "";
 
-        await user.save();
 
-        return res.send({success: true, message: "User Logged out"});
-    } catch (error) {
-        return res.stat(500).json({
-            error: true,
-            message: error.message,
-        });
-    }
+exports.updateUser = async (req, res) => {
+  const { id } = req.params;
+  const { first_name, last_name } = req.body;
+
+  const user = await User.findOne({ _id: id });
+
+  if (!user) {
+    return res.status(404).json({ message: `User with id "${id}" not found.` });
+  }
+
+  if (!first_name || !last_name) {
+    return res.status(422).json({ message: 'The fields fullName and role are required' });
+  }
+
+  await User.updateOne({ _id: id }, { first_name, last_name});
+
+  const userUpdated = await User.findById(id);
+
+  return res.status(200).json({ data: userUpdated });
 };
