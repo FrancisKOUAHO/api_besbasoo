@@ -203,7 +203,7 @@ exports.SignIn = async (req, res) => {
         }
 
         //Generate Access token
-        const {error, token} = await generateJwt(user.email, user.userId);
+        const {error, token} = await generateJwt(user.email, user.userId, user.first_name, user.last_name, );
         if (error) {
             return res.status(500).json({
                 error: true,
