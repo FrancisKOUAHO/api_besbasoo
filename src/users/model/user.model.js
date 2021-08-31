@@ -10,9 +10,11 @@ const userSchema = new Schema(
     {
         first_name: {
             type: String,
+            default: null
         },
         last_name: {
             type: String,
+            default: null
         },
         role: {
             type: String,
@@ -34,18 +36,23 @@ const userSchema = new Schema(
         },
         resetPasswordToken: {
             type: String,
+            default: null
         },
         resetPasswordExpires: {
             type: Date,
+            default: null
         },
         emailToken: {
             type: String,
+            default: null
         },
         emailTokenExpires: {
             type: Date,
+            default: null
         },
         accessToken: {
             type: String,
+            default: null
         },
         referralCode: {
             type: String,
@@ -53,6 +60,7 @@ const userSchema = new Schema(
         },
         referrer: {
             type: String,
+            default: null
         },
         address: [
             {

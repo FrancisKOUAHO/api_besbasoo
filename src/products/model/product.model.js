@@ -6,18 +6,23 @@ const productSchema = new Schema(
         _id: Schema.Types.ObjectId,
         title: {
             type: String,
+            default: null
         },
         description: {
             type: String,
+            default: null
         },
         sku: {
             type: String,
+            default: null
         },
         image: {
             type: String,
+            default: null
         },
         price: {
             type: Number,
+            default: null
         },
         product_category: [
             {type: Schema.Types.ObjectId, ref: 'Product_category'}

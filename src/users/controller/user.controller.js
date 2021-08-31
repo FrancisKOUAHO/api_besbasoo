@@ -107,14 +107,9 @@ exports.SignUp = async (req, res) => {
 
 
 exports.getUserDetails = async (req, res) => {
-    await res.json({
-        username: req.body.username,
-        email: req.body.email,
-        name: req.body.name,
-        _id: req.body._id,
-        updatedAt: req.body.updatedAt,
-        createdAt: req.body.createdAt
-    });
+    const { id } = req.params;
+    const user = await User.findOne({ });
+    return res.status(200).json({ data: user });
 };
 
 
