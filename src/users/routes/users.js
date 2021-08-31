@@ -10,8 +10,6 @@ const AuthController = require("../controller/user.controller");
 router.post("/signup", cleanBody, AuthController.SignUp);
 router.post("/signin", cleanBody, AuthController.SignIn);
 
-router.get("/profile", cleanBody, AuthController.getUser);
-
 router.patch("/activate", cleanBody, AuthController.Activate);
 
 router.patch("/forgot", cleanBody, AuthController.ForgotPassword);

@@ -105,17 +105,6 @@ exports.SignUp = async (req, res) => {
   }
 };
 
- exports.getUser = async (req, res) => {
-   const { id } = req.params;
-   const user = await User.findOne({ _id: id });
-
-   if (!user) {
-     return res.status(404).json({ message: `User with id "${id}" not found.` });
-   }
-
-   return res.status(200).json({ data: user });
-};
-
 exports.Activate = async (req, res) => {
   try {
     const { email, code } = req.body;
