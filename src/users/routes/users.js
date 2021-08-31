@@ -8,7 +8,10 @@ const {validateToken} = require("../../../middlewares/validateToken");
 const AuthController = require("../controller/user.controller");
 
 router.post("/signup", cleanBody, AuthController.SignUp);
+
 router.post("/signin", cleanBody, AuthController.SignIn);
+
+router.get("/me", cleanBody, AuthController.getUserDetails);
 
 router.patch("/activate", cleanBody, AuthController.Activate);
 

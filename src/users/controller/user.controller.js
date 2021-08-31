@@ -105,6 +105,13 @@ exports.SignUp = async (req, res) => {
   }
 };
 
+
+exports.getUserDetails = async (req, res) => {
+  await res.json(req.userData);
+};
+
+
+
 exports.Activate = async (req, res) => {
   try {
     const { email, code } = req.body;
