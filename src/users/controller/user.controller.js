@@ -106,16 +106,17 @@ exports.SignUp = async (req, res) => {
 };
 
 
-exports.getUserDetails = newUser => {
-    return {
-        username: newUser.username,
-        email: newUser.email,
-        name: newUser.name,
-        _id: newUser._id,
-        updatedAt: newUser.updatedAt,
-        createdAt: newUser.createdAt
-    };
-}
+exports.getUserDetails = async (req, res) => {
+    await res.json({
+        username: req.body.username,
+        email: req.body.email,
+        name: req.body.name,
+        _id: req.body._id,
+        updatedAt: req.body.updatedAt,
+        createdAt: req.body.createdAt
+    });
+};
+
 
 exports.Activate = async (req, res) => {
     try {
