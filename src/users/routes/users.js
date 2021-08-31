@@ -23,5 +23,7 @@ router.get("/referred", validateToken, AuthController.ReferredAccounts);
 
 router.patch("/update-user/:id", validateToken, AuthController.updateUser);
 
+router.patch("/logout", validateToken, AuthController.Logout);
+
 
 module.exports = router;
