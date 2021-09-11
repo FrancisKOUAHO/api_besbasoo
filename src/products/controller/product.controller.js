@@ -3,7 +3,6 @@ const Product = require('../model/product.model');
 const Category = require('../../category/model/category.model');
 
 
-
 exports.createProduct = async (req, res) => {
     try {
         const {title, description, sku, image, price, product_category, product_inventory} = req.body;
@@ -44,7 +43,7 @@ exports.createProduct = async (req, res) => {
 
 exports.getAllProduct = async (req, res) => {
 
-    await Product.find({}).populate("Product_category").exec((error, product) => {
+    await Product.find().populate("Product_category").exec((error, product) => {
         if (error) {
             return res.status(500).json(
                 {
